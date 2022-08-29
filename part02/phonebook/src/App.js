@@ -32,7 +32,7 @@ const App = () => {
     ? (<NotificationError message={errorMessage} />)
     : (<Notification message={errorMessage} />)
 
-  const personToShow = persons.filter(person => person.name.toLowerCase().includes(filterName))
+  const personToShow = persons.filter(person => person.name.toLowerCase().includes(filterName.toLowerCase()))
   
   const addPerson = (event) => {
     event.preventDefault()
@@ -51,7 +51,7 @@ const App = () => {
         PersonService
           .update(updateID, personObject)
           .then(updatedPerson => {
-            setPersons(persons.filter(person => person.id != updatedPerson.id).concat(updatedPerson))
+            setPersons(persons.filter(person => person.id !== updatedPerson.id).concat(updatedPerson))
             setNewName('')
             setNewNumber('')
             setShowNotif(true)
@@ -62,6 +62,7 @@ const App = () => {
             }, 3000)
           })
           .catch(error => {
+            console.log(error.response.data.error)
             setShowNotif(true)
             setIsError(true)
             setErrorMessage(`Information of ${newName} has already been removed from the server`)
@@ -85,6 +86,15 @@ const App = () => {
           setShowNotif(true)
           setIsError(false)
           setErrorMessage(`Added ${returnedPerson.name}`)
+          setTimeout(() => {
+            setShowNotif(false)
+          }, 3000)
+        })
+        .catch(error => {
+          console.log(error.response.data.error)
+          setShowNotif(true)
+          setIsError(true)
+          setErrorMessage(error.response.data.error)
           setTimeout(() => {
             setShowNotif(false)
           }, 3000)

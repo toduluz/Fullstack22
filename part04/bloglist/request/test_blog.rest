@@ -1,0 +1,50 @@
+POST http://localhost:3003/api/blogs HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Abble",
+    "author": "kakaka",
+    "url": "test",
+    "likes": 3
+}
+
+###
+GET http://localhost:3003/api/blogs
+
+###
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+    "username": "Astreka",
+    "password": "astrekads"
+
+}
+
+###
+POST  http://localhost:3003/api/blogs
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFzdHJla2EiLCJpZCI6IjYzMGNiNWJiNmU5YjFlZjk2ZTJmZjg3NCIsImlhdCI6MTY2MTc4MTYxMH0.V4nnpzEju8U76hBlE1LZHnar6tjwMgkso6Nf0BjHCpU
+
+{
+    "title": "Go To Statement Considered Harmful",
+    "author": "Edsger W. Dijkstra",
+    "url": "http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html",
+    "likes" : "5"
+}
+
+###
+DELETE http://localhost:3003/api/blogs/630cc9a0dfedc7ddf1f60285
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFzdHJla2EiLCJpZCI6IjYzMGNiNWJiNmU5YjFlZjk2ZTJmZjg3NCIsImlhdCI6MTY2MTc4MzA1MX0.Ow07uWfLdmas4FXuXhSEPHHiBMOnIYC9iZkYOMQ56o4
+
+###
+PUT http://localhost:3003/api/blogs/630cd0886cd7ec05001ffac0
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFzdHJla2EiLCJpZCI6IjYzMGNiNWJiNmU5YjFlZjk2ZTJmZjg3NCIsImlhdCI6MTY2MTc4MTYxMH0.V4nnpzEju8U76hBlE1LZHnar6tjwMgkso6Nf0BjHCpU
+
+{
+    "title": "React patterns",
+    "author": "Michael Chan",
+    "url": "https://reactpatterns.com/",
+    "likes": "7"
+}
